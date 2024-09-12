@@ -1,4 +1,8 @@
-chrome.runtime.onInstalled.addListener(() => {
-    console.log('Extension Installed');
-  });
-  
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.action === "download_image") {
+    chrome.downloads.download({
+      url: request.url,
+      conflictAction: 'uniquify'
+    });
+  }
+});
