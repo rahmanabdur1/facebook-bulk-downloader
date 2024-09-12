@@ -1,17 +1,14 @@
 {
     "manifest_version": 3,
     "name": "Facebook Bulk Photo Downloader",
-    "description": "Download multiple photos from Facebook at once.",
+    "description": "A Chrome extension to download multiple photos from Facebook at once.",
     "version": "1.0",
     "permissions": [
-      "activeTab",
       "downloads",
+      "activeTab",
       "storage",
       "scripting"
     ],
-    "background": {
-      "service_worker": "background.js"
-    },
     "action": {
       "default_popup": "popup.html",
       "default_icon": {
@@ -22,9 +19,17 @@
     },
     "content_scripts": [
       {
-        "matches": ["*://*.facebook.com/*"],
+        "matches": ["https://www.facebook.com/*"],
         "js": ["content.js"]
       }
-    ]
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "icons": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
   }
   
