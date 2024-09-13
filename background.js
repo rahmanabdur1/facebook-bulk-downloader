@@ -1,10 +1,13 @@
-// Listen for messages from the content script and trigger the download
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  if (request.action === "download_image") {
-    chrome.downloads.download({
-      url: request.url,
-      filename: `facebook_photo_${Date.now()}.jpg`, // You can customize this filename
-      conflictAction: 'uniquify'
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "download_images") {
+    const urls = request.urls;
+    urls.forEach((url, index) => {
+      chrome.downloads.download({
+        url: url,
+        filename: `facebook_image_${index + 1}.jpg`,
+        conflictAction: 'uniquify'
+      });
     });
+    sendResponse({ message: "Downloading images..." });
   }
 });

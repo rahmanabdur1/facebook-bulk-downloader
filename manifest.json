@@ -2,17 +2,18 @@
   "manifest_version": 3,
   "name": "Facebook Bulk Photo Downloader",
   "version": "1.0",
-  "description": "Download multiple photos from Facebook with a single click.",
+  "description": "Download all photos from a Facebook page or album with a single click.",
   "permissions": [
     "activeTab",
-    "downloads"
+    "downloads",
+    "scripting"
   ],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "icon16.png",
-      "48": "icon48.png",
-      "128": "icon128.png"
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
     }
   },
   "background": {
