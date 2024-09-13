@@ -1,3 +1,4 @@
+// Function to find and send all image URLs to the background script for downloading
 function downloadImages() {
   const images = document.querySelectorAll('img');
   let foundImages = [];
@@ -15,9 +16,9 @@ function downloadImages() {
   }
 }
 
+// Listen for a message from the popup to start downloading images
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.action === "download_photos") {
     downloadImages();
   }
 });
-
